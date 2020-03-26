@@ -1,0 +1,44 @@
+{
+  "nodes": [
+    {
+      "_type": "IdExtractorFunction",
+      "description": "A generic component id extractor function for topology elements.",
+      "groovyScript": "{{ include "./scripts/Auto sync component id extractor.groovy" }}",
+      "id": -9,
+      "identifier": "urn:stackpack:autosync:shared:id-extractor-function:auto-sync-component-id-extractor",
+      "name": "Auto sync component id extractor",
+      "parameters": [
+        {
+          "_type": "Parameter",
+          "id": -10,
+          "multiple": false,
+          "name": "topologyElement",
+          "required": true,
+          "system": true,
+          "type": "STRUCT_TYPE"
+        }
+      ]
+    },
+    {
+      "_type": "IdExtractorFunction",
+      "description": "A generic relation id extractor function for topology elements.",
+      "groovyScript": "{{ include "./scripts/Auto sync relation id extractor.groovy" }}",
+      "id": -11,
+      "identifier": "urn:stackpack:autosync:shared:id-extractor-function:auto-sync-relation-id-extractor",
+      "name": "Auto sync relation id extractor",
+      "parameters": [
+        {
+          "_type": "Parameter",
+          "id": -12,
+          "multiple": false,
+          "name": "topologyElement",
+          "required": true,
+          "system": true,
+          "type": "STRUCT_TYPE"
+        }
+      ]
+    }
+  ],
+  "timestamp": "2019-11-27T15:29:42Z",
+  "version": "0.1"
+}
