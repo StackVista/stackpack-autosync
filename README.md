@@ -14,7 +14,7 @@ The StackState [documentation](https://docs.stackstate.com/develop/creating_stac
 
 The StackPack is built using the [SBT](https://www.scala-sbt.org/) tool.
 
-In the main directory, compile the SAP StackPack using:
+In the main directory, compile the StackPack using:
 
 ```
 sbt compile

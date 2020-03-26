@@ -1,4 +1,4 @@
-# Contributing to StackState SAP StackPack
+# Contributing to StackState Custom Synchronization StackPack
 
 First of all, thanks for contributing!
 
