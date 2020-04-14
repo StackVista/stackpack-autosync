@@ -23,3 +23,11 @@ jobs:
       run: sbt test
     - name: Package stackpack
       run: sbt package
+    - uses: jfrog/setup-jfrog-cli@v1
+      env:
+         JF_ARTIFACTORY_1: ${{ secrets.JF_ARTIFACTORY_1 }}
+    - name: Upload to artifactory
+      run: |
+        # Ping the server
+        jfrog rt ping
+
