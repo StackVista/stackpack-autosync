@@ -49,11 +49,8 @@ jobs:
           asset_content_type: application/zip
       - name: Detect sbt version name
         run: echo ::set-env name=RELEASE_SBT_VERSION::$(sbt --error 'set showSuccess := false'  showVersion)
-      - uses: jfrog/setup-jfrog-cli@v1
-        env:
-           JF_ARTIFACTORY_1: ${{ secrets.JF_ARTIFACTORY_1 }}
       - name: Upload to artifactory
-        run: |
-          # Ping the server
-          jfrog rt ping && \
-          jfrog rt u "target/*.sts" "libs/com/stackstate/stackpack/autosync/${{env.RELEASE_SBT_VERSION}}"
+        env:
+          ARTIFACTORY_USERNAME: ${{ secrets.ARTIFACTORY_USERNAME }}
+          ARTIFACTORY_PASSWORD: ${{ secrets.ARTIFACTORY_PASSWORD }}
+        run:  sbt publish
