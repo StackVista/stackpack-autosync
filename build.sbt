@@ -40,8 +40,6 @@ lazy val root = (project in file("."))
         publishArtifact in (Compile, packageSrc) := false
     )),
     name := stackpackName
-    // disable publishing the main project
-    //publish / skip := true
   )
 
 lazy val showVersion = taskKey[Unit]("Show version")
