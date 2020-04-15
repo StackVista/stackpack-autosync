@@ -2,7 +2,7 @@ name: Stackpack Build
 
 on:
   push:
-    branches: [ master, STAC-8246-gitlab-workflow ]
+    branches: [ master ]
   pull_request:
     branches: [ master ]
 
