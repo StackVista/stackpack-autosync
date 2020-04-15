@@ -32,14 +32,18 @@ lazy val root = (project in file("."))
         resolvers ++= Vector("Stackstate Artifactory" at "https://dl.bintray.com/stackpack-sdk/stackpack-sdk", Resolver.mavenLocal),
         coursierUseSbtCredentials := true,
         // Publishing the StackPack is done by the StackState CI/CD pipeline.
-        credentials += Credentials(Path.userHome / ".sbt" / "stackstate-artifactory-publish.credentials"),
+        credentials += (if (sys.env.getOrElse("ARTIFACTORY_USERNAME", "").isEmpty) Credentials(Path.userHome / ".sbt" / "stackstate-artifactory-publish.credentials") else Credentials("Artifactory Realm","artifactory.stackstate.io",sys.env.getOrElse("ARTIFACTORY_USERNAME", ""),sys.env.getOrElse("ARTIFACTORY_PASSWORD", ""))),
         publishTo := Some("Artifactory Realm" at "https://artifactory.stackstate.io/artifactory/libs"),
         // disable publishing the main doc jar
         publishArtifact in (Compile, packageDoc) := false,
         // disable publishing the main sources jar
         publishArtifact in (Compile, packageSrc) := false
     )),
-    name := stackpackName,
-    // disable publishing the main project
-    publish / skip := true
+    name := stackpackName
   )
+
+lazy val showVersion = taskKey[Unit]("Show version")
+
+showVersion := {
+  println(version.value)
+}

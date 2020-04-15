@@ -2,7 +2,7 @@ name: Stackpack Build
 
 on:
   push:
-    branches: [ master, STAC-8246-gitlab-workflow ]
+    branches: [ master ]
   pull_request:
     branches: [ master ]
 
@@ -17,9 +17,5 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 1.8
-    - name: Compile
-      run: sbt compile
-    - name: Run tests
-      run: sbt test
-    - name: Package stackpack
-      run: sbt package
+    - name: Compile/Test/Package
+      run: sbt compile test package
