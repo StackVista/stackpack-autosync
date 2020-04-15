@@ -23,8 +23,6 @@ jobs:
         run: sbt test
       - name: Package stackpack
         run: sbt package
-      - name: Expore
-        run: ls -la target
       - name: Detect sts artifact name
         run: echo ::set-env name=RELEASE_ARTIFACT_NAME::$(cd target && ls *.sts)
       - name: Create Release
