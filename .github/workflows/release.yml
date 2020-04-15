@@ -41,8 +41,6 @@ jobs:
           asset_path: target/${{env.RELEASE_ARTIFACT_NAME}}
           asset_name: ${{env.RELEASE_ARTIFACT_NAME}}
           asset_content_type: application/zip
-      - name: Detect sbt version name
-        run: echo ::set-env name=RELEASE_SBT_VERSION::$(sbt --error 'set showSuccess := false'  showVersion)
       - name: Upload to artifactory
         env:
           ARTIFACTORY_USERNAME: ${{ secrets.ARTIFACTORY_USERNAME }}
