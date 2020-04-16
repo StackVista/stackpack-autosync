@@ -126,6 +126,6 @@ exitOnError
 git push origin "$tag_name"
 exitOnError
 
-echo "Check release pipeline running on  https://github.com/StackVista/stackpack-autosync/actions"
+comment "Check release pipeline running on  https://github.com/StackVista/stackpack-autosync/actions"
 
 comment "Be aware that the pipeline needs to be finished before the release is finished and can be used."
