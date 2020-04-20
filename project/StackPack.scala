@@ -51,16 +51,16 @@ object StackPack extends AutoPlugin {
       // copy stackpack.conf file and add version
       copyAndModifyConfFile(sourceDir, targetDir, version.value) +: stackPackResources
     },
-    version := determineVersion(lastReleasedStackPackVersion.value, name.value)
+    version := determineVersion(lastReleasedStackPackVersion.value)
   )
 
-  def determineVersion(stackPackVersion: String, projectName: String): String = {
-    val isTagForStackPack = {
+  def determineVersion(stackPackVersion: String): String = {
+    val isTag = {
       val gitTags = ("git tag --points-at HEAD".!!).split("\n").toSet + sys.env.getOrElse("CI_COMMIT_TAG", "")
-      gitTags.contains(s"$projectName-$stackPackVersion")
+      gitTags.contains(s"$stackPackVersion")
     }
 
-    if (isTagForStackPack) stackPackVersion
+    if (isTag) stackPackVersion
     else {
       val gitlabBranch = sys.env.get("CI_COMMIT_REF_NAME")
       val branch = gitlabBranch.getOrElse(("git rev-parse --abbrev-ref HEAD".!!).trim)
