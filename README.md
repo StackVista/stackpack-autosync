@@ -42,6 +42,10 @@ sbt package
 
 The StackPack release version is configured in the [version.sbt](version.sbt) file. StackPacks use [Semantic Versioning](https://semver.org/).
 
+## Releasing
+
+use `bin/publish.sh x.y.z`, ensure you are following semver
+
 ## Contributing
 
 Contributions are welcome! Please check our [contribution instructions](CONTRIBUTING.md).
