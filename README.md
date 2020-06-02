@@ -8,7 +8,7 @@ This StackPack contains everything you need to automatically synchronize topolog
 
 ## Documentation
 
-The StackState [documentation](https://docs.stackstate.com/develop/creating_stackpacks/) describes how to build and install a StackPack.
+The StackState [documentation](https://l.stackstate.com/2uv1BH) describes how to build and install a StackPack.
 
 ## Building
 
