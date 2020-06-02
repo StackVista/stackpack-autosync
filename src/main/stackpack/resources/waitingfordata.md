@@ -2,7 +2,7 @@
 
 The synchronization has been installed.
 
-Next, you can manually test the synchronization to ensure it is working correctly. You can use an HTTP POST request to push topology information to StackState using the [well-defined JSON input format](https://docs.stackstate.com/configure/topology_synchronization/#topology-json-format).
+Next, you can manually test the synchronization to ensure it is working correctly. You can use an HTTP POST request to push topology information to StackState using the [well-defined JSON input format](https://l.stackstate.com/oyJfJn).
 
 ## Example POST request
 
@@ -45,4 +45,4 @@ Next, you can manually test the synchronization to ensure it is working correctl
 curl -v user:password -X POST -H "Content-Type: application/json" --data-ascii @topology.json "{{config.baseUrl}}/stsAgent/intake/?api_key={{config.apiKey}}"
 ```
 
-There is a [complete example](https://docs.stackstate.com/configure/topology_synchronization/) on our documentation website.
+There is a [complete example](https://l.stackstate.com/XT73aI) on our documentation website.
