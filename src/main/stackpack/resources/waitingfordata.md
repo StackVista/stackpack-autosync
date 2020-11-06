@@ -11,7 +11,7 @@ Next, you can manually test the synchronization to ensure it is working correctl
 ```json
 {
    "apiKey":"{{config.apiKey}}",
-   "collection_timestamp":1467037580.595086,
+   "collection_timestamp":1585818978,
    "internalHostname":"lnx-343242.srv.stackstate.com",
    "topologies":[
       {
