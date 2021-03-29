@@ -1,1 +1,1 @@
-lastReleasedStackPackVersion := "3.0.1"
+lastReleasedStackPackVersion := "4.0.0"
