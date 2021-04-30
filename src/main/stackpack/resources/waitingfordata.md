@@ -6,6 +6,8 @@ Next, you can manually test the synchronization to ensure it is working correctl
 
 ## Example POST request
 
+The example below will create a component in StackState with type `application` and name `myDummyApp`. Note that a warning will appear in the stackstate-receiver.log if the `collection_timestamp` specified is older than 2 minutes.
+
 1. Save a file named `topology.json` with the following content
 
 ```json
@@ -45,4 +47,4 @@ Next, you can manually test the synchronization to ensure it is working correctl
 curl -v user:password -X POST -H "Content-Type: application/json" --data-ascii @topology.json "{{config.baseUrl}}/stsAgent/intake/?api_key={{config.apiKey}}"
 ```
 
-There is a [complete example](https://l.stackstate.com/XT73aI) on our documentation website.
+See the StackState documentation site for a [complete example of the topology JSON format](https://l.stackstate.com/XT73aI).
