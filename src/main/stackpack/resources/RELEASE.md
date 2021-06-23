@@ -1,9 +1,5 @@
 # Custom Synchronization StackPack Release Notes
 
-## 3.1.2 (18-06-2021)
-
-- Fetch dependencies from Artifactory 
-
 ## 3.1.1 (03-04-2021)
 
 - Common version bumped to 2.5.1
