@@ -1,7 +1,7 @@
 import sbt._
 object Dependencies {
   lazy val stackPackSdk = "com.stackstate.stackpack" %% "sdk" % "0.23.1" classifier "tests" classifier ""
-  lazy val stackstateApiTesting = "com.stackstate.api" %% "testing" % "1.0.0"
+  lazy val stackstateApiTesting = "com.stackstate.api" %% "testing" % "1.9.0"
 
   // Test dependencies
   lazy val scalaTest = "org.scalatest" %% "scalatest" % "3.0.5" % Test

@@ -29,7 +29,7 @@ lazy val root = (project in file("."))
           "-Yrangepos"
         ),
         javacOptions ++= Vector("-source", "1.8", "-target", "1.8", "-Xlint:unchecked", "-Xlint:deprecation", "-Werror"),
-        resolvers ++= Vector("Stackstate Artifactory" at "https://dl.bintray.com/stackpack-sdk/stackpack-sdk", Resolver.mavenLocal),
+        resolvers ++= Vector("Stackstate Artifactory" at "https://artifactory.stackstate.io/artifactory/public", Resolver.mavenLocal),
         coursierUseSbtCredentials := true,
         // Publishing the StackPack is done by the StackState CI/CD pipeline.
         credentials += (if (sys.env.getOrElse("ARTIFACTORY_USERNAME", "").isEmpty) Credentials(Path.userHome / ".sbt" / "stackstate-artifactory-publish.credentials") else Credentials("Artifactory Realm","artifactory.stackstate.io",sys.env.getOrElse("ARTIFACTORY_USERNAME", ""),sys.env.getOrElse("ARTIFACTORY_PASSWORD", ""))),
