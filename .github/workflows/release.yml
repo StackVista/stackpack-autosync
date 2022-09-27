@@ -18,31 +18,36 @@ jobs:
         with:
           java-version: 1.8
       - name: Compile/Test/Package
+        env:
+          ARTIFACTORY_USERNAME: ${{ secrets.ARTIFACTORY_USERNAME }}
+          ARTIFACTORY_PASSWORD: ${{ secrets.ARTIFACTORY_PASSWORD }}
         run: sbt compile test package
       - name: Detect sts artifact name
         env:
           ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
         run: echo ::set-env name=RELEASE_ARTIFACT_NAME::$(cd target && ls *.sts)
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN }}
-        with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
-          draft: false
-          prerelease: false
-      - name: Upload Release Asset to github
-        id: upload-release-asset
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
-          asset_path: target/${{env.RELEASE_ARTIFACT_NAME}}
-          asset_name: ${{env.RELEASE_ARTIFACT_NAME}}
-          asset_content_type: application/zip
+# THIS WAS COMMENTED OUT. FIX THE GITHUBTOKEN ON PROJECT PAGE FIRST!
+# https://stackstate.atlassian.net/browse/STAC-17883
+#      - name: Create Release
+#        id: create_release
+#        uses: actions/create-release@v1
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN }}
+#        with:
+#          tag_name: ${{ github.ref }}
+#          release_name: Release ${{ github.ref }}
+#          draft: false
+#          prerelease: false
+#      - name: Upload Release Asset to github
+#        id: upload-release-asset
+#        uses: actions/upload-release-asset@v1
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN }}
+#        with:
+#          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
+#          asset_path: target/${{env.RELEASE_ARTIFACT_NAME}}
+#          asset_name: ${{env.RELEASE_ARTIFACT_NAME}}
+#          asset_content_type: application/zip
       - name: Upload to artifactory
         env:
           ARTIFACTORY_USERNAME: ${{ secrets.ARTIFACTORY_USERNAME }}
