@@ -76,27 +76,7 @@
       "name": "{{integrationType}} - {{integrationUrl}}",
       "query": "label IN ('{{integrationType}}:{{integrationUrl}}')",
       "queryVersion": "0.0.1",
-      "showIndirectRelations": false,
-      "viewHealthStateConfiguration": {
-        "_type": "ViewHealthStateConfiguration",
-        "arguments": [
-          {
-            "_type": "ArgumentLongVal",
-            "id": -113,
-            "parameter": {{ get "urn:stackpack:common:view-health-state-configuration-function:minimum-health-states" "Type=Parameter;Name=minCriticalHealthStates" }},
-            "value": 10
-          },
-          {
-            "_type": "ArgumentLongVal",
-            "id": -114,
-            "parameter": {{ get "urn:stackpack:common:view-health-state-configuration-function:minimum-health-states" "Type=Parameter;Name=minDeviatingHealthStates" }},
-            "value": 10
-          }
-        ],
-        "enabled": true,
-        "function": {{ get "urn:stackpack:common:view-health-state-configuration-function:minimum-health-states" }},
-        "id": -112
-      }
+      "showIndirectRelations": false
     },
     {
       "_type": "ComponentTemplateFunction",

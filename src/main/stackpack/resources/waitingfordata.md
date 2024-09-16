@@ -6,12 +6,13 @@ Next, you can manually test the synchronization to ensure it is working correctl
 
 ## Example POST request
 
+The example below will create a component in StackState with type `application` and name `myDummyApp`. 
+
 1. Save a file named `topology.json` with the following content
 
 ```json
 {
    "apiKey":"{{config.apiKey}}",
-   "collection_timestamp":1467037580.595086,
    "internalHostname":"lnx-343242.srv.stackstate.com",
    "topologies":[
       {
@@ -45,4 +46,4 @@ Next, you can manually test the synchronization to ensure it is working correctl
 curl -v user:password -X POST -H "Content-Type: application/json" --data-ascii @topology.json "{{config.baseUrl}}/stsAgent/intake/?api_key={{config.apiKey}}"
 ```
 
-There is a [complete example](https://l.stackstate.com/XT73aI) on our documentation website.
+See the StackState documentation site for a [complete example of the topology JSON format](https://l.stackstate.com/XT73aI).
