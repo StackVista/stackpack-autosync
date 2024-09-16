@@ -64,7 +64,13 @@ object StackPack extends AutoPlugin {
     else {
       val gitlabBranch = sys.env.get("CI_COMMIT_REF_NAME")
       val branch = gitlabBranch.getOrElse(("git rev-parse --abbrev-ref HEAD".!!).trim)
-      s"${incrementVersion(stackPackVersion)}-$branch-SNAPSHOT"
+
+      // For local development it takes the commit count on the local branch + the commit sha,
+      // this results in an increasing version number for testing with local builds only (CI builds will typically have a different count)
+      val pipelineId = sys.env.getOrElse("CI_PIPELINE_IID", (1000 + "git rev-list --count HEAD".!!.trim.toInt).toString)
+      val hash = sys.env.getOrElse("CI_COMMIT_SHORT_SHA", "git rev-parse --short HEAD".!!.trim)
+      s"${incrementVersion(stackPackVersion)}-$branch-$pipelineId-$hash-SNAPSHOT"
+
     }
   }
 
